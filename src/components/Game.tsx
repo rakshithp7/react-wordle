@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import "./Game.css";
 import wordList from "../assets/words.txt";
 import guessWordList from "../assets/5letterwords.txt";
@@ -143,9 +143,24 @@ const Game: FC<Props> = ({ keyboardData, setColoredKeys }) => {
     }
   }, [attempt]);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputVal, _] = useState("");
+
+  const openKeyboard = () => {
+    // open keyboard for mobile
+    inputRef.current?.focus();
+  };
+
+  const inputOnChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setSelectedLetters([
+      ...selectedLetters,
+      e.currentTarget.value.toUpperCase(),
+    ]);
+  };
+
   return (
-    <div className="game__container">
-      <ToastContainer className="game__toast" position="top-right" />
+    <div className="game__container" onClick={openKeyboard}>
+      <ToastContainer position="top-right" autoClose={3000} />
       <EntryRow
         inputWord={attempt == 0 ? selectedLetters : usedWords[0]}
         colors={colors[0]}
@@ -169,6 +184,17 @@ const Game: FC<Props> = ({ keyboardData, setColoredKeys }) => {
       <EntryRow
         inputWord={attempt == 5 ? selectedLetters : usedWords[5]}
         colors={colors[5]}
+      />
+      <input
+        type="text"
+        ref={inputRef}
+        value={inputVal}
+        onChange={inputOnChange}
+        style={{
+          opacity: 0,
+          width: 0,
+          height: 0,
+        }}
       />
     </div>
   );

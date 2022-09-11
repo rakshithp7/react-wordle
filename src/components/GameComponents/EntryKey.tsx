@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./EntryKey.css";
 
 interface Props {
@@ -7,9 +7,20 @@ interface Props {
 }
 
 const EntryKey: FC<Props> = ({ selectedLetter, color }) => {
+  const [letter, setLetter] = useState("");
+
+  useEffect(() => {
+    setLetter(selectedLetter);
+  }, [selectedLetter]);
+
   return (
     <div className="entryKey__container" style={{ backgroundColor: color }}>
-      {selectedLetter}
+      <input
+        disabled
+        className="entryKey__inputField"
+        defaultValue={letter}
+        maxLength={1}
+      />
     </div>
   );
 };

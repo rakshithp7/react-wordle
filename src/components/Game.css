@@ -8,3 +8,10 @@
   border-radius: 15px;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
+
+@media only screen and (max-width: 800px) {
+  .game__container {
+    zoom: 0.9;
+    margin-top: 0;
+  }
+}

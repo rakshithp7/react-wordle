@@ -1,0 +1,11 @@
+.entryKey__container {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: inset 2px 2px 2px #cbced1, inset -2px -2px 2px white;
+}

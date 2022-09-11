@@ -1,0 +1,20 @@
+.keyboard__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  border-radius: 15px;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  padding: 20px;
+}
+
+.keyboard__container > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 600px) {
+  .keyboard__container {
+    display: none;
+  }
+}
